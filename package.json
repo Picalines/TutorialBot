@@ -1,0 +1,17 @@
+{
+  "name": "tutorialbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {},
+  "keywords": [
+    "tutorial",
+    "discord",
+    "bot"
+  ],
+  "author": "picalines",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
