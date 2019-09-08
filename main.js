@@ -38,13 +38,7 @@ bot.on('message', async msg => {
 		for (let cname in commands) {
 			if (m.startsWith(cname)) {
 				let args = m.slice(cname.length).split(' ').filter(el => el != '');
-				try {
-					await commands[cname].run(bot, msg, args, database);
-				}
-				catch (err) {
-					console.error(`Error on command '${cname}': ${err}`);
-				}
-				break;
+				await commands[cname].run(bot, msg, args, database);
 			}
 		}
 	}
