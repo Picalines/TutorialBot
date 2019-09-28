@@ -30,7 +30,7 @@ process.on("SIGINT", async () => {
 
 bot.on('message', async msg => {
 	if (msg.author.bot) return;
-	let acc = database.getAccount(msg.guild, msg.author);
+	let acc = database.getAccount(msg.member);
 	acc.xp++;
 	let prefix = database.getGuildData(msg.guild).prefix;
 	if (msg.content.toLowerCase().startsWith(prefix)) {

@@ -4,10 +4,13 @@ let guilds = {};
 
 const load = async (path) => {
 	console.log('attempt to load database...');
+	let data;
 	if (!await utils.existsAsync(path)) {
-		await utils.writeFileAsync(path, JSON.stringify({ guilds: {} }));
+		data = { guilds: {} }
 	}
-	let data = JSON.parse(await utils.readFileAsync(path));
+	else {
+		data = JSON.parse(await utils.readFileAsync(path));
+	}
 	guilds = data.guilds;
 	console.log('database successfully loaded!');
 }
@@ -31,14 +34,14 @@ const getGuildData = (guild) => {
 	return guilds[guild.id];
 }
 
-const getAccount = (guild, user) => {
-	let g = getGuildData(guild);
-	if (!g.accounts[user.id]) {
-		g.accounts[user.id] = {
+const getAccount = (member) => {
+	let g = getGuildData(member.guild);
+	if (!g.accounts[member.id]) {
+		g.accounts[member.id] = {
 			xp: 0
 		}
 	}
-	return g.accounts[user.id];
+	return g.accounts[member.id];
 }
 
 module.exports = {
