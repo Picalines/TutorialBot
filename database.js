@@ -5,11 +5,12 @@ let guilds = {};
 const load = async (path) => {
 	console.log('attempt to load database...');
 	let data;
-	if (!await utils.existsAsync(path)) {
-		data = { guilds: {} }
-	}
-	else {
+	if (await utils.existsAsync(path)) {
 		data = JSON.parse(await utils.readFileAsync(path));
+	}
+	// если файла database.js не существует, то юзаем стандартные данные
+	else {
+		data = { guilds: {} }
 	}
 	guilds = data.guilds;
 	console.log('database successfully loaded!');

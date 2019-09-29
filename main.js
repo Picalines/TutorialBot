@@ -29,9 +29,12 @@ process.on("SIGINT", async () => {
 });
 
 bot.on('message', async msg => {
-	if (msg.author.bot) return;
+	// завершаем функцию, если сообщение написал бот, или оно пришло не с сервера
+	if (msg.author.bot || msg.channel.type != "text") return;
 	let acc = database.getAccount(msg.member);
 	acc.xp++;
+	//...
+
 	let prefix = database.getGuildData(msg.guild).prefix;
 	if (msg.content.toLowerCase().startsWith(prefix)) {
 		let m = msg.content.slice(prefix.length);
