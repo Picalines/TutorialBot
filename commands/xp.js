@@ -1,3 +1,3 @@
-module.exports.run = async (bot, msg, args, database) => {
-    await msg.channel.send(`Твой xp: ${(await database.getAccount(msg.member)).xp}`);
+module.exports.run = (bot, msg, args, database) => {
+    msg.channel.send(`Твой xp: ${(database.getAccount(msg.member)).xp}`);
 }

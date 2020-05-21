@@ -1,17 +1,19 @@
 {
-  "name": "tutorialbot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {},
-  "keywords": [
-    "tutorial",
-    "discord",
-    "bot"
-  ],
-  "author": "picalines",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^11.5.1"
-  }
+    "name": "tutorialbot",
+    "version": "1.0.0",
+    "description": "simple discord bot",
+    "main": "main.js",
+    "scripts": {
+        "start": "node ."
+    },
+    "keywords": [
+        "tutorial",
+        "discord",
+        "bot"
+    ],
+    "author": "picalines",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^12.2.0"
+    }
 }
