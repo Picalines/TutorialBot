@@ -1,8 +1,9 @@
 {
-    "name": "tutorialbot",
-    "version": "1.0.0",
+    "name": "tutorial-bot",
+    "version": "2.0.0",
     "description": "simple discord bot",
-    "main": "main.js",
+    "type": "module",
+    "main": "./src/index.js",
     "scripts": {
         "start": "node ."
     },
@@ -11,8 +12,11 @@
         "discord",
         "bot"
     ],
-    "author": "picalines",
-    "license": "ISC",
+    "author": "Picalines",
+    "license": "MIT",
+    "engines": {
+        "node": ">=13.0.0"
+    },
     "dependencies": {
         "discord.js": "^12.2.0"
     }
