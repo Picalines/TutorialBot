@@ -3,7 +3,7 @@ import { readFile } from "fs/promises";
 const TOKEN_FILENAME = 'token.txt';
 const TOKEN_PATH = './' + TOKEN_FILENAME;
 
-export async function readToken() {
+async function load() {
     let fileBuffer;
 
     try {
@@ -19,6 +19,11 @@ export async function readToken() {
 /**
  * @param {import('discord.js').Client} client
  */
-export async function loginWithToken(client) {
-    return client.login(await readToken());
+async function login(client) {
+    return client.login(await load());
 }
+
+export const tokenLoader = {
+    load,
+    login,
+};

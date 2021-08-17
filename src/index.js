@@ -1,7 +1,7 @@
 import { Client } from "discord.js";
 import { commandHandler } from "./commandHandler.js";
 import { database } from "./database.js";
-import { loginWithToken } from "./token.js";
+import { tokenLoader } from "./token.js";
 
 const client = new Client();
 
@@ -9,7 +9,7 @@ async function main() {
     console.log('starting bot...');
     await database.load();
     await commandHandler.loadCommands();
-    await loginWithToken(client);
+    await tokenLoader.login(client);
 }
 
 client.on('ready', () => {
