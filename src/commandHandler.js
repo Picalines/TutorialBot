@@ -48,6 +48,10 @@ async function handleMessage(message) {
 
     const usedCommand = commands.find(({ name }) => userInput.startsWith(name));
 
+    if (!usedCommand) {
+        return;
+    }
+
     const args = userInput.slice(usedCommand.name.length).split(' ').filter(Boolean);
 
     await usedCommand.run({ client: message.client, message, args, database });
