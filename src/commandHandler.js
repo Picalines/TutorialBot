@@ -3,13 +3,13 @@ import { database } from "./database.js";
 
 const COMMANDS_PATH = "./commands";
 
-/** @type {Command[]} */
+/** @type {import('./command').Command[]} */
 let commands = [];
 
 /**
  * @private
  * @param {string} modulePath
- * @returns {Command}
+ * @returns {import('./command').Command}
  */
 async function loadCommand(modulePath) {
     const { default: command } = await import(modulePath);

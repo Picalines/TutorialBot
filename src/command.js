@@ -12,3 +12,11 @@
  * @property {import('./database')} database
  * @property {string[]} args
  */
+
+/**
+ * type hint for command information
+ * @param {Command} info
+ */
+ export function command(info) {
+    return info;
+}
