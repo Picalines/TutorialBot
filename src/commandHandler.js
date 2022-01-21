@@ -3,14 +3,21 @@ import { database } from "./database.js";
 
 const COMMANDS_PATH = "./commands";
 
+/** @type {Command[]} */
 let commands = [];
 
 /**
- * @param {string} modulePath
  * @private
+ * @param {string} modulePath
+ * @returns {Command}
  */
 async function loadCommand(modulePath) {
     const { default: command } = await import(modulePath);
+
+    if (typeof command != 'object') {
+        throw new Error(`${modulePath}: missing default export`);
+    }
+
     commands.push(command);
     return command;
 }
@@ -54,7 +61,7 @@ async function handleMessage(message) {
 
     const args = userInput.slice(usedCommand.name.length).split(' ').filter(Boolean);
 
-    await usedCommand.run({ client: message.client, message, args, database });
+    await usedCommand.run({ client: message.client, message, database, args });
 }
 
 export const commandHandler = {
