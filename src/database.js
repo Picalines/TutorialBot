@@ -3,15 +3,18 @@ import { existsSync } from 'fs';
 
 const DATABSE_PATH = './database.json';
 
-const DEFAULT_GUILD_DATA = {
-    prefix: '!',
-    accounts: {},
-};
-
 const DEFAULT_ACCOUNT = {
     xp: 0,
 };
 
+const DEFAULT_GUILD_DATA = {
+    prefix: '!',
+
+    /** @type {Record<string, typeof DEFAULT_ACCOUNT>} */
+    accounts: {},
+};
+
+/** @type {Record<string, typeof DEFAULT_GUILD_DATA>} */
 let guilds = {};
 
 async function load() {
@@ -39,6 +42,7 @@ async function save() {
 
 /**
  * @param {import('discord.js').Guild} guild
+ * @returns {typeof DEFAULT_GUILD_DATA}
  */
 function getGuildData(guild) {
     if (!guilds[guild.id]) {
@@ -50,6 +54,7 @@ function getGuildData(guild) {
 
 /**
  * @param {import('discord.js').GuildMember} member
+ * @returns {typeof DEFAULT_ACCOUNT}
  */
 function getAccount(member) {
     const { accounts } = getGuildData(member.guild);
